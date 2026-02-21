@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BriefIQ AI | Executive Decision Intelligence</title>
+
+<style>
+.nav-btn{
+  display:inline-block;
+  padding: 14px 22px;
+  background:#38bdf8;
+  color:#0b1220;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:800;
+  transition: all 0.25s ease;
+}
+.nav-btn:hover{
+  background:#0ea5e9;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.3);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+p {
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+video {
+    width: 80%;
+    max-width: 900px;
+    border-radius: 15px;
+    margin: 20px auto;
+    display: block;
+}
+
+button {
+    padding: 12px 20px;
+    background: #38bdf8;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #0ea5e9;
+}
+
+.section {
+    padding: 40px 20px;
+}
+
+.chat-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    background: #1e293b;
+}
+
+footer {
+    padding: 30px;
+    font-size: 14px;
+    color: #94a3b8;
+}
+  video {
+  width: 80%;
+  max-width: 900px;
+  border-radius: 15px;
+  margin: 20px auto;
+  display: block;
+}
+
+/* ===== HERO OVERLAY STYLES ===== */
+.hero{
+  position: relative;
+  width: 80%;
+  max-width: 900px;
+  margin: 60px auto 40px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  background:#000;
+}
+
+.hero video{
+  width: 100%;
+  display: block;
+}
+
+/* overlay covers video but allows clicking controls */
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,.30), rgba(0,0,0,.55));
+}
+
+/* Title positioned higher */
+.hero-overlay h1{
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  width: 90%;
+  font-size: clamp(24px, 3.8vw, 40px);
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-shadow: 0 10px 28px rgba(0,0,0,.85);
+}
+
+/* Subtitle positioned lower */
+.hero-overlay p{
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  width: min(650px, 85%);
+  font-size: clamp(15px, 1.8vw, 20px);
+  line-height: 1.6;
+  color: rgba(255,255,255,.95);
+  text-shadow: 0 8px 20px rgba(0,0,0,.85);
+}
+
+/* Subtitle slightly BELOW title */
+.hero-overlay p{
+  margin: 14px 0 0;
+  max-width: 720px;
+  font-size: clamp(10px, .8vw, 10px);
+  line-height: 1.55;
+  color: rgba(255,255,255,.92);
+  text-shadow: 0 8px 22px rgba(0,0,0,.65);
+}
+
+/* Make sure controls are visible and not hidden by overlay */
+.hero video::-webkit-media-controls{
+  position: relative;
+  z-index: 3;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <video autoplay muted loop playsinline controls>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay">
+    <h1>Executive Decision Intelligence</h1>
+    <p>BriefIQ transforms messy business inputs into clear executive summaries, visible risks, and actionable next steps.</p>
+  </div>
+</div>
+
+<div class="section">
+ <a href="about.html" class="nav-btn">
+  Learn More About BriefIQ →
+</a>
+  
+<!-- CHATBOT -->
+<div class="section">
+<h2>Live Demo: Chatbot</h2>
+<div class="chat-container">
+
+<!-- PASTE YOUR CHATBOT IFRAME BELOW -->
+<iframe 
+src="https://share.chatling.ai/s/zpsx53cPGM6hEYP?embed=true" 
+width="100%" 
+height="500" 
+style="border:none;">
+</iframe>
+</div>
+</div>
+
+<!-- X FACTOR FEATURE -->
+<div class="section">
+<h3>X-Factor Feature</h3>
+<p>This website includes a dark executive theme with auto-playing AI demo video and smooth multi-page navigation for a professional product experience.</p>
+</div>
+</body>
+</html>
