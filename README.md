@@ -20,3 +20,6 @@ Frontend: GitHub Pages
 AI Engine: Google AI Studio (Video Understanding + Google Search Grounding)
 
 This solution is designed for pilot-stage testing with executive stakeholders.
+
+## Business Value
+ExecIntel reduces executive analysis time and improves strategic clarity by converting unstructured earnings content into decision-ready outputs.
