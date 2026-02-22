@@ -7,15 +7,11 @@ https://anita-ops-source.github.io/execintel-final-project/
 **Demo Page**  
 https://anita-ops-source.github.io/execintel-final-project/demo.html  
 
----
-
 ## Executive Summary
 
 ExecIntel is a pilot-ready Generative AI solution that converts earnings call videos and transcripts into structured, decision-ready executive intelligence briefs.
 
 It reduces analysis time, improves strategic clarity, and standardizes cross-functional insights for executive teams.
-
----
 
 ## Business Problem
 
@@ -31,8 +27,6 @@ This process is time-intensive, inconsistent, and prone to missed strategic sign
 
 Traditional BI tools cannot interpret narrative tone, implied risk exposure, or contextual strategy shifts.
 
----
-
 ## Solution
 
 ExecIntel transforms unstructured earnings content into a structured “Intelligence Brief” containing:
@@ -44,8 +38,6 @@ ExecIntel transforms unstructured earnings content into a structured “Intellig
 
 The output is formatted for stakeholder-ready and board-level review.
 
----
-
 ## Why Generative AI
 
 Generative AI is required to:
@@ -56,8 +48,6 @@ Generative AI is required to:
 - Standardize executive-ready outputs  
 
 Without multimodal AI, this level of contextual understanding is not feasible at scale.
-
----
 
 ## Architecture
 
@@ -72,8 +62,6 @@ Google AI Studio
 - Structured output generation  
 
 The system is designed for pilot-stage deployment with executive stakeholders.
-
----
 
 ## Business Impact
 
