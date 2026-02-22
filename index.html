@@ -6,7 +6,7 @@
   <title>ExecIntel | Executive Decision Support</title>
 
   <style>
-    :root{
+    : root{
       --bg1:#0b1220;
       --bg2:#0f1b33;
       --card: rgba(255,255,255,.06);
@@ -63,12 +63,13 @@
 
     /* HERO image only (no big text overlay) */
     .hero{
-      border-radius: 22px;
-      overflow:hidden;
-      background: #000;
-      box-shadow: 0 22px 60px rgba(0,0,0,.45);
-      border: 1px solid rgba(255,255,255,.10);
-    }
+  position: relative;
+  border-radius: 22px;
+  overflow:hidden;
+  background: #000;
+  box-shadow: 0 22px 60px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.10);
+}
     .hero img{
       width: 100%;
       display:block;
@@ -82,46 +83,6 @@
       inset:0;
       pointer-events:none;
     }
-
-    /* Below-hero content */
-    .grid{
-      margin-top: 22px;
-      display:grid;
-      grid-template-columns: 1.3fr .9fr;
-      gap: 18px;
-    }
-    @media (max-width: 880px){
-      .grid{ grid-template-columns: 1fr; }
-    }
-
-    .card{
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      border-radius: 18px;
-      padding: 18px 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-    }
-
-    h1{
-      margin: 0 0 8px 0;
-      font-size: clamp(22px, 2.4vw, 30px);
-      letter-spacing: .2px;
-    }
-    p{
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 15.5px;
-    }
-
-    ul{
-      margin: 10px 0 0 18px;
-      padding: 0;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 15.5px;
-    }
-
     .btn{
       display:inline-block;
       padding: 14px 18px;
@@ -148,7 +109,70 @@
       flex-wrap:wrap;
       margin-top: 14px;
     }
+/* Polished value section */
+.value-section{
+  margin-top: 26px;
+  padding: 46px 22px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px;
+}
 
+.value-container{
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.value-section h2{
+  margin: 0 0 12px 0;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.value-intro{
+  max-width: 720px;
+  margin: 0 auto 28px auto;
+  color: #cbd5e1;
+  line-height: 1.65;
+  font-size: 15.5px;
+}
+
+.value-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.value-item{
+  text-align: left;
+  padding: 18px 18px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.value-item:hover{
+  transform: translateY(-4px);
+  border-color: rgba(56,189,248,.55);
+}
+
+.value-item h3{
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.value-item p{
+  margin: 0;
+  color: #cbd5e1;
+  line-height: 1.55;
+  font-size: 14.5px;
+}
     footer{
       margin-top: 26px;
       text-align:center;
@@ -173,28 +197,42 @@
     </div>
 
     <!-- SIMPLE, CLEAN CONTENT BELOW -->
-    <div class="grid">
-      <div class="card">
-        <h1>Executive Decision Support from Earnings Content</h1>
-        <p>
-          ExecIntel turns earnings videos or transcripts into a board-ready “Intelligence Brief”:
-          executive summary, key risks, and department-level action items.
-        </p>
-        <div class="ctaRow">
-          <a class="btn btn-primary" href="demo.html">View Demo →</a>
-        </div>
+    <section class="value-section">
+  <div class="value-container">
+
+    <h2>Decision Intelligence</h2>
+
+    <p class="value-intro">
+      ExecIntel transforms executive communications into a structured,
+      decision-ready brief designed for leadership review.
+    </p>
+
+    <div class="value-grid">
+
+      <div class="value-item">
+        <h3>Executive Brief</h3>
+        <p>Clear synthesis of material themes and performance signals.</p>
       </div>
 
-      <div class="card">
-        <h1>What you get</h1>
-        <ul>
-          <li>Executive summary (highlights + concerns)</li>
-          <li>Risk scan (cost, supply chain, customer, competitive)</li>
-          <li>Department action items (Finance / Ops / Sales)</li>
-          <li>Optional claim validation (web grounding)</li>
-        </ul>
+      <div class="value-item">
+        <h3>Risk Framing</h3>
+        <p>Identification of financial, operational, and competitive exposure.</p>
       </div>
+
+      <div class="value-item">
+        <h3>Strategic Implications</h3>
+        <p>Translation of executive signals into forward-looking impact.</p>
+      </div>
+
+      <div class="value-item">
+        <h3>Action Alignment</h3>
+        <p>Defined ownership and next-step considerations across functions.</p>
+      </div>
+
     </div>
+
+  </div>
+</section>
 
     <footer>© 2026 ExecIntel</footer>
   </div>
