@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExecIntel | Demo</title>
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f172a;
+      --text:#ffffff;
+      --muted:#cbd5e1;
+      --border: rgba(148,163,184,.18);
+      --accent:#38bdf8;
+      --accentHover:#0ea5e9;
+      --radius: 18px;
+      --shadow: 0 22px 70px rgba(0,0,0,.55);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 50% -10%, rgba(56,189,248,.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{ color: inherit; text-decoration:none; }
+    .wrap{ width:min(1100px, 92%); margin:0 auto; }
+
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.68);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 900;
+      letter-spacing: .4px;
+      font-size: 18px;
+    }
+    .brand .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(56,189,248,.55);
+    }
+    nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      align-items:center;
+      gap: 18px;
+      font-size: 14px;
+      color: rgba(255,255,255,.86);
+    }
+    nav a{
+      padding: 10px 10px;
+      border-radius: 10px;
+      transition: background .2s ease;
+    }
+    nav a:hover{ background: rgba(255,255,255,.06); }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 18px;
+      background: var(--accent);
+      color:#07121f;
+      border-radius: 12px;
+      font-weight: 900;
+      border: 0;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      box-shadow: 0 14px 34px rgba(56,189,248,.18);
+      white-space: nowrap;
+    }
+    .btn:hover{
+      background: var(--accentHover);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(56,189,248,.22);
+    }
+    .btn.secondary{
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      box-shadow: none;
+      border: 1px solid var(--border);
+    }
+    .btn.secondary:hover{
+      background: rgba(255,255,255,.12);
+      transform: translateY(-2px);
+    }
+
+    main{ padding: 38px 0 70px 0; }
+    h1{
+      margin: 0 0 10px 0;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: .2px;
+      text-align:center;
+    }
+    p{
+      margin: 0 auto 22px auto;
+      max-width: 820px;
+      text-align:center;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    .video-card{
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    video{
+      width: 100%;
+      display:block;
+      background:#000;
+    }
+    .meta{
+      padding: 14px 16px 16px 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    footer{
+      padding: 26px 0;
+      color: rgba(148,163,184,.9);
+      font-size: 13px;
+      text-align:center;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>EXECINTEL</span>
+      </div>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#how">How It Works</a></li>
+          <li><a href="demo.html" aria-current="page">Demo</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="btn secondary" href="index.html">← Back</a>
+        <a
+          class="btn"
+          href="https://aistudio.google.com/apps/36313336-7808-4aca-a5b5-9d0d380f56c2?source=&showPreview=true&showAssistant=true"
+          target="_blank"
+          rel="noopener"
+        >
+          Analyze Earnings →
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>ExecIntel Demo</h1>
+    <p>
+      Watch a quick walkthrough of the ExecIntel “Intelligence Brief” experience.
+      (Make sure <b>execintel-demo.mp4</b> is in the same folder as this file.)
+    </p>
+
+    <div class="video-card">
+      <video controls playsinline preload="metadata" poster="execintel-hero.png">
+        <source src="execintel-demo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="meta">
+        Tip: Export the Runway video in <b>16:9</b> for the cleanest look on the web.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 ExecIntel — Strategic Intelligence Assistant
+  </footer>
+</body>
+</html>
