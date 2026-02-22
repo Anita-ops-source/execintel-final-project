@@ -8,177 +8,246 @@
   <style>
     :root{
       --bg:#0b1220;
-      --card:#0f172a;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
       --text:#ffffff;
-      --muted:#cbd5e1;
-      --stroke:rgba(148,163,184,.22);
-      --btn:#38bdf8;
-      --btnHover:#0ea5e9;
+      --muted:#b7c3d6;
+      --muted2:#93a4bf;
+      --accent:#38bdf8;
+      --accent2:#0ea5e9;
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 24px 70px rgba(0,0,0,.45);
+      --radius: 18px;
     }
-    *{ box-sizing:border-box; }
+
+    *{box-sizing:border-box}
     body{
       margin:0;
       font-family: Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(56,189,248,.14), transparent 55%),
-                  radial-gradient(900px 500px at 85% 10%, rgba(59,130,246,.12), transparent 55%),
-                  var(--bg);
-      color:var(--text);
+      background: radial-gradient(1200px 600px at 50% 0%, #132244 0%, var(--bg) 55%);
+      color: var(--text);
     }
-    .wrap{ width:min(1100px, 92%); margin:0 auto; }
 
-    /* Top nav */
+    .wrap{
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Top Nav */
     .nav{
-      position:sticky; top:0; z-index:10;
-      background: rgba(11,18,32,.72);
+      position: sticky;
+      top: 0;
+      z-index: 10;
       backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--stroke);
+      background: rgba(5,10,20,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 0;
     }
-    .brand{ font-weight:900; letter-spacing:.6px; }
-    .brand span{ color:var(--btn); }
+    .brand{
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: rgba(255,255,255,.92);
+    }
     .nav a{
-      color:var(--muted);
+      color: rgba(255,255,255,.78);
       text-decoration:none;
-      margin-left:18px;
-      font-weight:700;
+      font-weight: 700;
+      font-size: 13px;
+      margin-left: 16px;
     }
     .nav a:hover{ color:#fff; }
 
-    /* Hero */
-    .hero{
-      margin:26px auto 0;
-      border-radius:20px;
-      overflow:hidden;
-      border:1px solid var(--stroke);
-      background:#000;
-      box-shadow: 0 22px 70px rgba(0,0,0,.5);
-      position:relative;
-    }
-    .hero img{ width:100%; display:block; height:auto; }
-    .hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(to bottom, rgba(0,0,0,.18), rgba(0,0,0,.78));
-      pointer-events:none;
-    }
-    .hero-content{
-      position:absolute;
-      left:0; right:0; bottom:0;
-      padding:28px;
-      max-width:900px;
-      margin:0 auto;
-      z-index:2;
-      text-align:left;
-    }
-    h1{
-      margin:0 0 10px 0;
-      font-size: clamp(28px, 4vw, 46px);
-      font-weight:900;
-      text-shadow: 0 10px 30px rgba(0,0,0,.85);
-    }
-    .sub{
-      margin:0 0 18px 0;
-      color: rgba(255,255,255,.92);
-      line-height:1.55;
-      font-size: clamp(14px, 1.55vw, 18px);
-      text-shadow: 0 8px 20px rgba(0,0,0,.85);
-      max-width:760px;
-    }
-
     /* Buttons */
-    .actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:10px; }
     .btn{
-      display:inline-block;
-      padding: 14px 20px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 18px;
       border-radius: 12px;
-      font-weight:900;
+      font-weight: 900;
       text-decoration:none;
-      transition:.2s ease;
+      border: 1px solid rgba(255,255,255,.14);
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      user-select:none;
+      white-space:nowrap;
     }
-    .btn-primary{ background:var(--btn); color:#07101f; }
+    .btn-primary{
+      background: var(--accent);
+      color: #07111f;
+      border-color: transparent;
+    }
     .btn-primary:hover{
-      background:var(--btnHover);
+      background: var(--accent2);
       transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(0,0,0,.35);
+      box-shadow: 0 16px 32px rgba(0,0,0,.35);
     }
     .btn-ghost{
-      border:1px solid var(--stroke);
-      background: rgba(15,23,42,.55);
-      color: var(--text);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
     }
     .btn-ghost:hover{
+      background: rgba(255,255,255,.10);
       transform: translateY(-2px);
-      border-color: rgba(56,189,248,.55);
+      box-shadow: 0 16px 32px rgba(0,0,0,.25);
     }
 
-    /* Simple section */
-    .section{ padding:26px 0 44px; }
-    .card{
-      background: rgba(15,23,42,.55);
-      border: 1px solid var(--stroke);
-      border-radius: 18px;
-      padding: 18px;
+    /* Hero */
+    .hero{
+      margin: 28px 0 18px 0;
+      border-radius: 22px;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.10);
+      background: #000;
+      position: relative;
+      min-height: 520px;
     }
-    .card-title{ font-weight:900; margin-bottom:8px; }
-    ul{ margin:10px 0 0; padding-left:18px; color:var(--muted); line-height:1.6; }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.55) 45%, rgba(0,0,0,.30) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.30) 0%, rgba(0,0,0,.65) 100%),
+        url("execintel-hero.png");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05) contrast(1.02);
+      transform: scale(1.03);
+    }
+
+    .hero-content{
+      position: relative;
+      padding: 70px 56px;
+      max-width: 720px;
+    }
+
+    .kicker{
+      color: rgba(255,255,255,.70);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    h1{
+      margin: 0 0 12px 0;
+      font-size: clamp(30px, 4.2vw, 52px);
+      line-height: 1.05;
+      letter-spacing: .2px;
+    }
+
+    .sub{
+      margin: 0 0 22px 0;
+      color: rgba(255,255,255,.86);
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 600px;
+    }
+
+    .cta{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    /* Value panel */
+    .panel{
+      margin: 16px 0 34px 0;
+      padding: 18px 18px;
+      border-radius: var(--radius);
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .panel h2{
+      margin: 0 0 12px 0;
+      font-size: 14px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+    }
+
+    .bullets{
+      margin:0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
 
     footer{
-      border-top:1px solid var(--stroke);
-      color:#94a3b8;
-      font-size:13px;
-      padding:18px 0;
+      padding: 26px 0 34px;
+      color: var(--muted2);
+      font-size: 12px;
       text-align:center;
+    }
+
+    @media (max-width: 700px){
+      .hero{ min-height: 520px; }
+      .hero-content{ padding: 56px 20px; }
     }
   </style>
 </head>
 
 <body>
+
   <div class="nav">
     <div class="wrap nav-inner">
-      <div class="brand">EXEC<span>INTEL</span></div>
+      <div class="brand">EXECINTEL</div>
       <div>
-        <a href="./index.html">Home</a>
-        <a href="./demo.html">Demo</a>
+        <a href="index.html">Home</a>
+        <a href="demo.html">Demo</a>
       </div>
     </div>
   </div>
 
   <div class="wrap">
-    <div class="hero">
-      <img src="./execintel-hero.png" alt="ExecIntel hero image">
+
+    <section class="hero">
       <div class="hero-content">
-        <h1>Strategic Intelligence for Executive Decisions</h1>
+        <div class="kicker">Executive Decision Support</div>
+        <h1>Strategic intelligence from earnings content.</h1>
         <p class="sub">
-          Turn earnings videos and transcripts into a board-ready brief: executive summary, key risks,
-          and department-level action items.
+          Upload an earnings clip or paste a transcript to generate a board-ready brief:
+          executive summary, key risks, and department-level action items—plus quick claim validation.
         </p>
-        <div class="actions">
-          <!-- Replace with your real AI Studio link if needed -->
-          <a class="btn btn-primary" target="_blank" rel="noopener"
-             href="https://aistudio.google.com/apps/36313336-7808-4aca-a5b5-9d0d380f56c2?source=&showPreview=true&showAssistant=true">
+
+        <div class="cta">
+          <a class="btn btn-primary"
+             href="https://aistudio.google.com/apps/36313336-7808-4aca-a5b5-9d0d380f56c2?source=&showPreview=true&showAssistant=true"
+             target="_blank" rel="noopener">
             Analyze Earnings →
           </a>
-          <a class="btn btn-ghost" href="./demo.html">Watch Demo</a>
+
+          <a class="btn btn-ghost" href="demo.html">
+            Watch Demo
+          </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
-      <div class="card">
-        <div class="card-title">What ExecIntel delivers</div>
-        <ul>
-          <li>Executive summary (highlights + concerns)</li>
-          <li>Risk scan (cost, supply chain, customer, competitive)</li>
-          <li>Department action items (Finance / Ops / Sales)</li>
-          <li>Optional claim validation using web grounding</li>
-        </ul>
-      </div>
-    </div>
+    <section class="panel">
+      <h2>What ExecIntel delivers</h2>
+      <ul class="bullets">
+        <li>Executive summary (highlights + concerns)</li>
+        <li>Risk scan (cost, supply chain, customer, competitive)</li>
+        <li>Department action items (Finance / Ops / Sales)</li>
+        <li>Optional claim validation via web grounding</li>
+      </ul>
+    </section>
 
     <footer>© 2026 ExecIntel</footer>
   </div>
+
 </body>
 </html>
