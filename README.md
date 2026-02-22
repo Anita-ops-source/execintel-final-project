@@ -1,25 +1,80 @@
-# ExecIntel – Strategic Intelligence Assistant
+# ExecIntel  
+### Strategic Intelligence Platform for Executive Decision Support  
 
-ExecIntel is a pilot-ready GenAI solution designed for executive teams and strategy leaders. 
+**Live Application**  
+https://anita-ops-source.github.io/execintel-final-project/  
 
-## Live Website
-https://anita-ops-source.github.io/execintel-final-project/
+**Demo Page**  
+https://anita-ops-source.github.io/execintel-final-project/demo.html  
 
-## AI Engine (Google AI Studio)
-https://aistudio.google.com/apps/36313336-7808-4aca-a5b5-9d0d380f56c2
+---
 
-## Overview
-ExecIntel transforms earnings call videos and transcripts into structured executive outputs, including:
-- Executive summaries
-- Strategic risk identification
-- Department action items
-- Market validation using Google Search grounding
+## Executive Summary
+
+ExecIntel is a pilot-ready Generative AI solution that converts earnings call videos and transcripts into structured, decision-ready executive intelligence briefs.
+
+It reduces analysis time, improves strategic clarity, and standardizes cross-functional insights for executive teams.
+
+---
+
+## Business Problem
+
+Earnings calls and executive communications are long, narrative-driven, and unstructured.
+
+Senior leaders must manually extract:
+- Performance drivers  
+- Strategic risks  
+- Operational signals  
+- Department-level implications  
+
+This process is time-intensive, inconsistent, and prone to missed strategic signals.
+
+Traditional BI tools cannot interpret narrative tone, implied risk exposure, or contextual strategy shifts.
+
+---
+
+## Solution
+
+ExecIntel transforms unstructured earnings content into a structured “Intelligence Brief” containing:
+
+- Executive performance summary  
+- Strategic and operational risk identification  
+- Department-specific action recommendations  
+- Market claim validation using Google Search grounding  
+
+The output is formatted for stakeholder-ready and board-level review.
+
+---
+
+## Why Generative AI
+
+Generative AI is required to:
+
+- Interpret long-form spoken and written narrative  
+- Extract structured insights from contextual language  
+- Identify implied risk beyond keyword detection  
+- Standardize executive-ready outputs  
+
+Without multimodal AI, this level of contextual understanding is not feasible at scale.
+
+---
 
 ## Architecture
-Frontend: GitHub Pages  
-AI Engine: Google AI Studio (Video Understanding + Google Search Grounding)
 
-This solution is designed for pilot-stage testing with executive stakeholders.
+**Frontend**  
+GitHub Pages (HTML interface)
 
-## Business Value
-ExecIntel reduces executive analysis time and improves strategic clarity by converting unstructured earnings content into decision-ready outputs.
+**AI Engine**  
+Google AI Studio  
+- Video understanding  
+- Transcript analysis  
+- Search grounding  
+- Structured output generation  
+
+The system is designed for pilot-stage deployment with executive stakeholders.
+
+---
+
+## Business Impact
+
+ExecIntel enables faster executive analysis, stronger strategic alignment, and clearer cross-functional action planning by converting narrative earnings content into structured intelligence.
