@@ -3,536 +3,182 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ExecIntel | Strategic Intelligence Platform</title>
+  <title>ExecIntel | Executive Decision Support</title>
 
   <style>
     :root{
       --bg:#0b1220;
-      --panel:#0f172a;
+      --card:#0f172a;
       --text:#ffffff;
       --muted:#cbd5e1;
-      --muted2:#94a3b8;
-      --accent:#38bdf8;
-      --accentHover:#0ea5e9;
-      --border: rgba(148,163,184,.18);
-      --shadow: 0 22px 70px rgba(0,0,0,.55);
-      --radius: 18px;
+      --stroke:rgba(148,163,184,.22);
+      --btn:#38bdf8;
+      --btnHover:#0ea5e9;
     }
-
     *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family: Arial, sans-serif;
-      background: radial-gradient(1200px 700px at 50% -10%, rgba(56,189,248,.16), transparent 55%),
-                  radial-gradient(900px 600px at 20% 10%, rgba(14,165,233,.10), transparent 60%),
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(56,189,248,.14), transparent 55%),
+                  radial-gradient(900px 500px at 85% 10%, rgba(59,130,246,.12), transparent 55%),
                   var(--bg);
       color:var(--text);
     }
-
-    a{ color: inherit; text-decoration:none; }
     .wrap{ width:min(1100px, 92%); margin:0 auto; }
 
-    /* ===== NAV ===== */
-    header{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.68);
-      border-bottom: 1px solid var(--border);
-    }
+    /* Top nav */
     .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding: 14px 0;
-      gap: 14px;
+      position:sticky; top:0; z-index:10;
+      background: rgba(11,18,32,.72);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--stroke);
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight: 900;
-      letter-spacing: .4px;
-      font-size: 18px;
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
     }
-    .brand .dot{
-      width:10px;height:10px;border-radius:50%;
-      background: var(--accent);
-      box-shadow: 0 0 18px rgba(56,189,248,.55);
+    .brand{ font-weight:900; letter-spacing:.6px; }
+    .brand span{ color:var(--btn); }
+    .nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:18px;
+      font-weight:700;
     }
-    nav ul{
-      list-style:none;
-      margin:0;
-      padding:0;
-      display:flex;
-      align-items:center;
-      gap: 18px;
-      font-size: 14px;
-      color: rgba(255,255,255,.86);
-    }
-    nav a{
-      padding: 10px 10px;
-      border-radius: 10px;
-      transition: background .2s ease, color .2s ease;
-    }
-    nav a:hover{ background: rgba(255,255,255,.06); }
-    .cta{
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
+    .nav a:hover{ color:#fff; }
 
-    /* ===== BUTTONS ===== */
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 12px 18px;
-      background: var(--accent);
-      color:#07121f;
-      border-radius: 12px;
-      font-weight: 900;
-      border: 0;
-      cursor: pointer;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-      box-shadow: 0 14px 34px rgba(56,189,248,.18);
-      white-space: nowrap;
-    }
-    .btn:hover{
-      background: var(--accentHover);
-      transform: translateY(-2px);
-      box-shadow: 0 18px 44px rgba(56,189,248,.22);
-    }
-    .btn.secondary{
-      background: rgba(255,255,255,.08);
-      color: var(--text);
-      box-shadow: none;
-      border: 1px solid var(--border);
-    }
-    .btn.secondary:hover{
-      background: rgba(255,255,255,.12);
-      transform: translateY(-2px);
-    }
-
-    /* ===== HERO ===== */
+    /* Hero */
     .hero{
-      position: relative;
-      margin: 16px auto 0 auto;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      min-height: 520px;
-      background: #000;
+      margin:26px auto 0;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid var(--stroke);
+      background:#000;
+      box-shadow: 0 22px 70px rgba(0,0,0,.5);
+      position:relative;
     }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,.20), rgba(0,0,0,.78)),
-        url("execintel-hero.png") center/cover no-repeat;
-      filter: saturate(1.05) contrast(1.05);
-      transform: scale(1.02);
-    }
+    .hero img{ width:100%; display:block; height:auto; }
     .hero::after{
       content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(900px 500px at 50% 60%, rgba(56,189,248,.22), transparent 65%);
+      position:absolute; inset:0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.18), rgba(0,0,0,.78));
       pointer-events:none;
     }
-
     .hero-content{
-      position: relative;
-      z-index: 2;
-      padding: 68px 22px 56px 22px;
-      text-align:center;
+      position:absolute;
+      left:0; right:0; bottom:0;
+      padding:28px;
+      max-width:900px;
+      margin:0 auto;
+      z-index:2;
+      text-align:left;
     }
-    .hero h1{
-      margin: 0 0 10px 0;
-      font-size: clamp(34px, 5vw, 64px);
-      font-weight: 900;
-      letter-spacing: .6px;
-      text-shadow: 0 18px 38px rgba(0,0,0,.65);
+    h1{
+      margin:0 0 10px 0;
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight:900;
+      text-shadow: 0 10px 30px rgba(0,0,0,.85);
     }
-    .hero h2{
-      margin: 0 auto 18px auto;
-      max-width: 860px;
-      font-size: clamp(18px, 2.2vw, 28px);
-      font-weight: 700;
+    .sub{
+      margin:0 0 18px 0;
       color: rgba(255,255,255,.92);
-      line-height: 1.25;
-      text-shadow: 0 14px 28px rgba(0,0,0,.65);
-    }
-    .hero p{
-      margin: 0 auto 24px auto;
-      max-width: 860px;
-      color: rgba(255,255,255,.90);
-      font-size: 15px;
-      line-height: 1.65;
-      text-shadow: 0 14px 28px rgba(0,0,0,.65);
-    }
-    .hero-actions{
-      display:flex;
-      gap: 12px;
-      justify-content:center;
-      flex-wrap: wrap;
-      margin-top: 18px;
+      line-height:1.55;
+      font-size: clamp(14px, 1.55vw, 18px);
+      text-shadow: 0 8px 20px rgba(0,0,0,.85);
+      max-width:760px;
     }
 
-    /* ===== SECTIONS ===== */
-    section{
-      padding: 68px 0;
-    }
-    .section-title{
-      text-align:center;
-      margin: 0 0 10px 0;
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: .3px;
-    }
-    .section-sub{
-      text-align:center;
-      margin: 0 auto 28px auto;
-      max-width: 860px;
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 15px;
-    }
-
-    /* Cards */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-    }
-    .card{
-      grid-column: span 4;
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 16px 40px rgba(0,0,0,.22);
-    }
-    .card h3{
-      margin: 0 0 8px 0;
-      font-size: 16px;
-      font-weight: 900;
-    }
-    .card p{
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    /* Demo */
-    .demo-wrap{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 16px;
-      align-items: start;
-    }
-    .video-card{
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      overflow:hidden;
-      box-shadow: var(--shadow);
-    }
-    video{
-      width: 100%;
-      display:block;
-      background:#000;
-    }
-    .video-meta{
-      padding: 14px 16px 16px 16px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-    .side{
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-    }
-    .side h3{ margin:0 0 10px 0; font-size: 16px; font-weight: 900; }
-    .side ul{
-      margin:0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-    .pill{
+    /* Buttons */
+    .actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:10px; }
+    .btn{
       display:inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(56,189,248,.12);
-      border: 1px solid rgba(56,189,248,.22);
-      color: rgba(255,255,255,.92);
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 10px;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight:900;
+      text-decoration:none;
+      transition:.2s ease;
+    }
+    .btn-primary{ background:var(--btn); color:#07101f; }
+    .btn-primary:hover{
+      background:var(--btnHover);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(0,0,0,.35);
+    }
+    .btn-ghost{
+      border:1px solid var(--stroke);
+      background: rgba(15,23,42,.55);
+      color: var(--text);
+    }
+    .btn-ghost:hover{
+      transform: translateY(-2px);
+      border-color: rgba(56,189,248,.55);
     }
 
-    /* Contact */
-    .contact{
-      background: rgba(255,255,255,.03);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .contact-box{
-      max-width: 860px;
-      margin: 0 auto;
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--border);
+    /* Simple section */
+    .section{ padding:26px 0 44px; }
+    .card{
+      background: rgba(15,23,42,.55);
+      border: 1px solid var(--stroke);
       border-radius: 18px;
       padding: 18px;
-      box-shadow: 0 16px 40px rgba(0,0,0,.22);
     }
-    .contact-row{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 12px;
-    }
-    input, textarea{
-      width:100%;
-      padding: 12px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(11,18,32,.60);
-      color: var(--text);
-      outline: none;
-      font-size: 14px;
-    }
-    textarea{ min-height: 110px; resize: vertical; }
-    .small{
-      color: var(--muted2);
-      font-size: 12px;
-      margin-top: 10px;
-      line-height: 1.5;
-    }
+    .card-title{ font-weight:900; margin-bottom:8px; }
+    ul{ margin:10px 0 0; padding-left:18px; color:var(--muted); line-height:1.6; }
 
     footer{
-      padding: 26px 0;
-      color: var(--muted2);
-      font-size: 13px;
+      border-top:1px solid var(--stroke);
+      color:#94a3b8;
+      font-size:13px;
+      padding:18px 0;
       text-align:center;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 920px){
-      .card{ grid-column: span 6; }
-      .demo-wrap{ grid-template-columns: 1fr; }
-      .contact-row{ grid-template-columns: 1fr; }
-    }
-    @media (max-width: 560px){
-      nav ul{ gap: 8px; }
-      nav a{ padding: 8px 8px; }
-      .card{ grid-column: span 12; }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- NAV -->
-  <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <span class="dot"></span>
-        <span>EXECINTEL</span>
-      </div>
-
-      <nav aria-label="Primary">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#how">How It Works</a></li>
-          <li><a href="demo.html">Demo</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="cta">
-        <a class="btn secondary" href="#demo">Watch Demo</a>
-        <a
-          class="btn"
-          href="https://aistudio.google.com/apps/36313336-7808-4aca-a5b5-9d0d380f56c2?source=&showPreview=true&showAssistant=true"
-          target="_blank"
-          rel="noopener"
-        >
-          Analyze Earnings →
-        </a>
+  <div class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">EXEC<span>INTEL</span></div>
+      <div>
+        <a href="./index.html">Home</a>
+        <a href="./demo.html">Demo</a>
       </div>
     </div>
-  </header>
+  </div>
 
-  <!-- HERO (HOME) -->
-  <main id="home" class="wrap">
-    <div class="hero" role="img" aria-label="ExecIntel hero image">
+  <div class="wrap">
+    <div class="hero">
+      <img src="./execintel-hero.png" alt="ExecIntel hero image">
       <div class="hero-content">
-        <h1>EXECINTEL</h1>
-        <h2>Strategic Intelligence Platform for Executive Decision Support</h2>
-        <p>
-          ExecIntel converts earnings call videos and transcripts into structured,
-          decision-ready executive intelligence briefs. Designed for strategy leaders
-          and executive teams, it reduces analysis time and improves cross-functional alignment.
+        <h1>Strategic Intelligence for Executive Decisions</h1>
+        <p class="sub">
+          Turn earnings videos and transcripts into a board-ready brief: executive summary, key risks,
+          and department-level action items.
         </p>
-
-        <div class="hero-actions">
-          <a
-            class="btn"
-            href="https://aistudio.google.com/apps/36313336-7808-4aca-a5b5-9d0d380f56c2?source=&showPreview=true&showAssistant=true"
-            target="_blank"
-            rel="noopener"
-          >
-            Launch Analyzer →
+        <div class="actions">
+          <!-- Replace with your real AI Studio link if needed -->
+          <a class="btn btn-primary" target="_blank" rel="noopener"
+             href="https://aistudio.google.com/apps/36313336-7808-4aca-a5b5-9d0d380f56c2?source=&showPreview=true&showAssistant=true">
+            Analyze Earnings →
           </a>
-          <a class="btn secondary" href="#how">See How It Works</a>
+          <a class="btn btn-ghost" href="./demo.html">Watch Demo</a>
         </div>
       </div>
     </div>
-  </main>
 
-  <!-- HOW IT WORKS -->
-  <section id="how">
-    <div class="wrap">
-      <h2 class="section-title">How It Works</h2>
-      <p class="section-sub">
-        ExecIntel turns unstructured executive communications into a board-ready brief.
-        Designed for pilot readiness: simple workflow, clear output, and easy stakeholder review.
-      </p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>1) Ingest</h3>
-          <p>Upload audio/video or paste a transcript. ExecIntel extracts the key statements and context.</p>
-        </div>
-        <div class="card">
-          <h3>2) Summarize</h3>
-          <p>Generates an executive summary, major drivers, and financial/operational highlights.</p>
-        </div>
-        <div class="card">
-          <h3>3) Risk + Actions</h3>
-          <p>Flags risks and produces department-level action items (Finance, Ops, Sales, Supply Chain).</p>
-        </div>
-        <div class="card">
-          <h3>4) Validate Claims</h3>
-          <p>Cross-checks market claims and assumptions using lightweight web grounding (where available).</p>
-        </div>
-        <div class="card">
-          <h3>5) Share</h3>
-          <p>Outputs a clean “Intelligence Brief” format that is easy for stakeholders to review.</p>
-        </div>
-        <div class="card">
-          <h3>6) Iterate</h3>
-          <p>Refine based on feedback, update inputs, and maintain consistent formatting over time.</p>
-        </div>
+    <div class="section">
+      <div class="card">
+        <div class="card-title">What ExecIntel delivers</div>
+        <ul>
+          <li>Executive summary (highlights + concerns)</li>
+          <li>Risk scan (cost, supply chain, customer, competitive)</li>
+          <li>Department action items (Finance / Ops / Sales)</li>
+          <li>Optional claim validation using web grounding</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <!-- DEMO -->
-  <section id="demo">
-    <div class="wrap">
-      <h2 class="section-title">Demo</h2>
-      <p class="section-sub">
-        This short demo shows the “Intelligence Brief” experience and how ExecIntel presents insights clearly.
-      </p>
-
-      <div class="demo-wrap">
-        <div class="video-card">
-          <!-- Put execintel-demo.mp4 in the same folder as index.html -->
-          <video controls playsinline preload="metadata" poster="execintel-hero.png">
-            <source src="execintel-demo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-meta">
-            <strong style="color:#fff;">ExecIntel Demo Video</strong><br />
-            Tip: If your video feels “cropped,” export from Runway in <b>16:9</b> for best fit on this page.
-          </div>
-        </div>
-
-        <aside class="side">
-          <span class="pill">Pilot-ready checklist</span>
-          <h3>What graders look for</h3>
-          <ul>
-            <li>Clear business problem + target audience</li>
-            <li>Simple user flow with a strong value proposition</li>
-            <li>Working link + polished UI/UX</li>
-            <li>Evidence of thoughtful design and output quality</li>
-          </ul>
-          <div style="height:12px;"></div>
-          <a
-            class="btn"
-            href="https://aistudio.google.com/apps/36313336-7808-4aca-a5b5-9d0d380f56c2?source=&showPreview=true&showAssistant=true"
-            target="_blank"
-            rel="noopener"
-            style="width:100%;"
-          >
-            Try the Analyzer →
-          </a>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <h2 class="section-title">Contact</h2>
-      <p class="section-sub">
-        Want a pilot test or stakeholder walkthrough? Send a note below.
-      </p>
-
-      <div class="contact-box">
-        <form onsubmit="return openMailto(event)">
-          <div class="contact-row">
-            <input id="name" type="text" placeholder="Your name" required />
-            <input id="email" type="email" placeholder="Your email" required />
-          </div>
-          <div style="height:12px;"></div>
-          <textarea id="message" placeholder="Message (what you want to test, who the stakeholders are, timeline)..." required></textarea>
-          <div style="height:12px;"></div>
-          <button class="btn" type="submit">Send Email →</button>
-          <div class="small">
-            This button opens your email client using a mailto link (no backend needed for class projects).
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © 2026 ExecIntel — Strategic Intelligence Assistant
-  </footer>
-
-  <script>
-    function openMailto(e){
-      e.preventDefault();
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("message").value.trim();
-
-      const subject = encodeURIComponent("ExecIntel Pilot Inquiry");
-      const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-      );
-
-      // Replace with your email if you want
-      const to = "yourname@email.com";
-      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-      return false;
-    }
-  </script>
-
+    <footer>© 2026 ExecIntel</footer>
+  </div>
 </body>
 </html>
