@@ -1,231 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ExecIntel | Executive Decision Support</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExecIntel | Executive Decision Support</title>
 
-<style>
-:root{
-  --bg:#0b1220;
-  --accent:#38bdf8;
-  --accent2:#0ea5e9;
-}
+  <style>
+    :root{
+      --bg1:#0b1220;
+      --bg2:#0f1b33;
+      --card: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.10);
+      --text:#ffffff;
+      --muted:#cbd5e1;
+      --btn:#38bdf8;
+      --btnHover:#0ea5e9;
+    }
 
-*{box-sizing:border-box}
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 50% 0%, rgba(56,189,248,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg2), var(--bg1));
+    }
 
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(1200px 600px at 50% 0%, #162a55 0%, var(--bg) 55%);
-  color:white;
-}
+    /* Top nav */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 16px 22px;
+      background: rgba(2,6,23,.55);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .brand{
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #eaf6ff;
+      text-decoration:none;
+    }
+    .nav a{
+      color: rgba(255,255,255,.88);
+      text-decoration:none;
+      font-weight: 700;
+      margin-left: 16px;
+    }
+    .nav a:hover{ color:#fff; }
 
-/* Layout */
-.wrap{
-  width:min(1100px,92%);
-  margin:0 auto;
-}
+    .wrap{
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      padding: 32px 0 56px 0;
+    }
 
-/* Navigation */
-.nav{
-  position:sticky;
-  top:0;
-  z-index:10;
-  backdrop-filter: blur(10px);
-  background: rgba(5,10,20,.55);
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
+    /* HERO image only (no big text overlay) */
+    .hero{
+      border-radius: 22px;
+      overflow:hidden;
+      background: #000;
+      box-shadow: 0 22px 60px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .hero img{
+      width: 100%;
+      display:block;
+      /* makes it feel brighter/cleaner */
+      filter: brightness(1.08) contrast(1.02) saturate(1.05);
+    }
+    /* subtle light overlay to reduce darkness */
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+    }
 
-.nav-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 0;
-}
+    /* Below-hero content */
+    .grid{
+      margin-top: 22px;
+      display:grid;
+      grid-template-columns: 1.3fr .9fr;
+      gap: 18px;
+    }
+    @media (max-width: 880px){
+      .grid{ grid-template-columns: 1fr; }
+    }
 
-.brand{
-  font-weight:900;
-  letter-spacing:1px;
-  font-size:14px;
-}
+    .card{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 18px 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
 
-.nav a{
-  text-decoration:none;
-  color:rgba(255,255,255,.75);
-  font-weight:700;
-  font-size:13px;
-  margin-left:18px;
-}
+    h1{
+      margin: 0 0 8px 0;
+      font-size: clamp(22px, 2.4vw, 30px);
+      letter-spacing: .2px;
+    }
+    p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15.5px;
+    }
 
-.nav a:hover{
-  color:white;
-}
+    ul{
+      margin: 10px 0 0 18px;
+      padding: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15.5px;
+    }
 
-/* Hero Section */
-.hero{
-  margin:40px 0 20px;
-  border-radius:22px;
-  overflow:hidden;
-  position:relative;
-  min-height:520px;
-  box-shadow:0 24px 60px rgba(0,0,0,.35);
-}
+    .btn{
+      display:inline-block;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-weight: 900;
+      text-decoration:none;
+      transition: all .22s ease;
+      border: 0;
+      cursor:pointer;
+    }
+    .btn-primary{
+      background: var(--btn);
+      color:#071021;
+      box-shadow: 0 12px 26px rgba(56,189,248,.25);
+    }
+    .btn-primary:hover{
+      background: var(--btnHover);
+      transform: translateY(-2px);
+    }
 
-/* Brighter background with lighter overlays */
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(90deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.18) 55%, rgba(0,0,0,.08) 100%),
-    linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.22) 100%),
-    url("execintel-hero.png");
-  background-size:cover;
-  background-position:center;
-  filter:brightness(1.12) contrast(1.02) saturate(1.05);
-}
+    .ctaRow{
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
 
-.hero-content{
-  position:relative;
-  padding:80px 50px;
-  max-width:720px;
-}
-
-/* Glass card for text */
-.hero-card{
-  padding:28px 26px;
-  border-radius:18px;
-  background:rgba(12,20,36,.58);
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter:blur(12px);
-}
-
-.hero-card h1{
-  margin:0 0 12px 0;
-  font-size:clamp(32px,4.5vw,50px);
-  line-height:1.05;
-}
-
-.hero-card p{
-  margin:0;
-  font-size:15px;
-  line-height:1.55;
-  color:rgba(255,255,255,.9);
-  max-width:560px;
-}
-
-/* Single CTA below hero */
-.center-cta{
-  text-align:center;
-  margin:30px 0 20px;
-}
-
-.btn{
-  display:inline-block;
-  padding:12px 20px;
-  border-radius:12px;
-  font-weight:800;
-  text-decoration:none;
-  transition:all .2s ease;
-}
-
-.btn-primary{
-  background:var(--accent);
-  color:#07111f;
-}
-
-.btn-primary:hover{
-  background:var(--accent2);
-  transform:translateY(-2px);
-  box-shadow:0 14px 28px rgba(0,0,0,.35);
-}
-
-/* Value Section */
-.panel{
-  margin:20px 0 40px;
-  padding:20px 24px;
-  border-radius:18px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.1);
-}
-
-.panel h2{
-  font-size:14px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  margin:0 0 12px 0;
-}
-
-.panel ul{
-  margin:0;
-  padding-left:18px;
-  line-height:1.6;
-  font-size:14px;
-  color:rgba(255,255,255,.85);
-}
-
-footer{
-  text-align:center;
-  padding:30px 0 40px;
-  font-size:12px;
-  color:rgba(255,255,255,.6);
-}
-
-@media(max-width:700px){
-  .hero-content{
-    padding:60px 22px;
-  }
-}
-</style>
+    footer{
+      margin-top: 26px;
+      text-align:center;
+      color: rgba(148,163,184,.9);
+      font-size: 13px;
+    }
+  </style>
 </head>
 
 <body>
-
-<div class="nav">
-  <div class="wrap nav-inner">
-    <div class="brand">EXECINTEL</div>
+  <div class="nav">
+    <a class="brand" href="index.html">EXECINTEL</a>
     <div>
-      <a href="index.html">Home</a>
       <a href="demo.html">Demo</a>
     </div>
   </div>
-</div>
 
-<div class="wrap">
+  <div class="wrap">
+    <!-- HERO IMAGE ONLY -->
+    <div class="hero">
+      <img src="execintel-hero.png" alt="ExecIntel Hero" />
+    </div>
 
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-card">
-        <h1>Strategic intelligence from earnings content.</h1>
+    <!-- SIMPLE, CLEAN CONTENT BELOW -->
+    <div class="grid">
+      <div class="card">
+        <h1>Executive Decision Support from Earnings Content</h1>
         <p>
-          Turn earnings clips or transcripts into a board-ready brief:
-          executive summary, risk scan, and department-level action items.
+          ExecIntel turns earnings videos or transcripts into a board-ready “Intelligence Brief”:
+          executive summary, key risks, and department-level action items.
         </p>
+        <div class="ctaRow">
+          <a class="btn btn-primary" href="demo.html">View Demo →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h1>What you get</h1>
+        <ul>
+          <li>Executive summary (highlights + concerns)</li>
+          <li>Risk scan (cost, supply chain, customer, competitive)</li>
+          <li>Department action items (Finance / Ops / Sales)</li>
+          <li>Optional claim validation (web grounding)</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <div class="center-cta">
-    <a class="btn btn-primary" href="demo.html">
-      Explore the Demo →
-    </a>
+    <footer>© 2026 ExecIntel</footer>
   </div>
-
-  <section class="panel">
-    <h2>Outputs</h2>
-    <ul>
-      <li>Executive summary (highlights + concerns)</li>
-      <li>Risk scan (cost, supply chain, competitive)</li>
-      <li>Department action items (Finance / Ops / Sales)</li>
-    </ul>
-  </section>
-
-  <footer>
-    © 2026 ExecIntel
-  </footer>
-
-</div>
-
 </body>
 </html>
