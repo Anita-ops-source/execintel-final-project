@@ -178,7 +178,22 @@
     }
   </style>
 </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
+<script>
+function downloadPDF() {
+  const element = document.querySelector(".output"); // adjust if needed
+  html2pdf()
+    .from(element)
+    .set({
+      margin: 0.5,
+      filename: "ExecIntel_Board_Brief.pdf",
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    })
+    .save();
+}
+</script>
 <body>
   <div class="nav">
     <a class="brand" href="index.html">EXECINTEL</a>
